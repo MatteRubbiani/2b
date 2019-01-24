@@ -29,7 +29,6 @@ class Add(Resource):
         user=UsersModel(None, nome, ordine)
         user.save_to_db()
 
-        return user.ordine
         return "user added"
 
     def delete(self):
@@ -51,4 +50,4 @@ class Add(Resource):
             a.append(i.nome)
 
 
-        return a
+        return {"name": a}
