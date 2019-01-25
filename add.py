@@ -13,7 +13,7 @@ class Add(Resource):
         nome=data[0]
         user=UsersModel.find_by_name(nome)
         if user:
-            return "already exists"
+            return "already exists", 500
 
         users=UsersModel.get_all()
         if users:
@@ -29,7 +29,8 @@ class Add(Resource):
         user=UsersModel(None, nome, ordine)
         user.save_to_db()
 
-        return "user added"
+        return "user added", 200
+
 
     def delete(self):
         data=request.get_json()
@@ -37,9 +38,10 @@ class Add(Resource):
         user=UsersModel.find_by_name(nome)
         if user:
             user.delete_from_db()
-            return "deleted"
+            return "deleted", 200
 
-        return "user does not exist"
+        return "user does not exist", 500
+
 
 
 
@@ -49,5 +51,4 @@ class Add(Resource):
         for i in users:
             a.append(i.nome)
 
-
-        return {"name": a}
+        return {"name": a}, 200

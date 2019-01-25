@@ -17,14 +17,11 @@ api=Api(app)
 
 
 
-#@app.before_first_request
-#def create_table():
-    #db.create_all()
+@app.before_first_request
+def create_table():
+    db.create_all()
 
 api.add_resource(Add, "/in")
-#api.add_resource(CreateOrario, "/timetable/create")
-#api.add_resource(OrarioGiorno, "/timetable/day")
-#api.add_resource(Put, "/friend/put")
 
 
 if __name__=="__main__":
