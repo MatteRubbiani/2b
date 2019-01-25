@@ -17,9 +17,9 @@ api=Api(app)
 
 
 
-@app.before_first_request
-def create_table():
-    db.create_all()
+#@app.before_first_request
+#def create_table():
+    #db.create_all()
 
 api.add_resource(Add, "/in")
 
