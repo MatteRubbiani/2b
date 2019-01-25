@@ -50,5 +50,10 @@ class Add(Resource):
         a=[]
         for i in users:
             a.append(i.nome)
+        c=""
+        for i in a:
+            c=c+i+","
 
-        return {"name": a}, 200
+        d=c[:-1]
+
+        return {"name":d}, 200
