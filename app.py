@@ -5,6 +5,7 @@ from datetime import timedelta
 
 
 from add import Add
+from delete import Delete
 
 
 
@@ -22,6 +23,7 @@ api=Api(app)
     #db.create_all()
 
 api.add_resource(Add, "/in")
+api.add_resource(Delete, "/all")
 
 
 if __name__=="__main__":
