@@ -44,12 +44,13 @@ class Add(Resource):
     def get(self):
         users=UsersModel.get_all()
         a=[]
-        for i in users:
-            a.append(i.nome)
-        c=""
-        for i in a:
-            c=c+i+","
+        if users:
+            for i in users:
+                a.append(i.nome)
+            c=""
+            for i in a:
+                c=c+i+","
+            d=c[:-1]
+            return {"name":d}, 200
 
-        d=c[:-1]
-
-        return {"name":d}, 200
+        return {"name":[]}
