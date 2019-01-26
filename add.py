@@ -49,7 +49,8 @@ class Add(Resource):
             c=""
             if a:
                 for i in a:
-                    c=c+i+","
+                    if i:
+                        c=c+i+","
                 d=c[:-1]
                 return {"name":d}, 200
 
