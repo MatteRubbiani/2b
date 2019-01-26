@@ -11,8 +11,6 @@ class Add(Resource):
     def post(self):
         data=request.get_json()
         nome = request.args.get('name')
-        #nome=data["name"]
-        #return nome
         user=UsersModel.find_by_name(nome)
         if user:
             return "already exists", 500
@@ -32,7 +30,7 @@ class Add(Resource):
 
     def delete(self):
         data=request.get_json()
-        nome=data["name"]
+        nome = request.args.get('name')
         user=UsersModel.find_by_name(nome)
         if user:
             user.delete_from_db()
