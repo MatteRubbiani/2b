@@ -12,6 +12,6 @@ class Delete(Resource):
         if users:
             for i in users:
                 i.delete_from_db()
-            return "users deleted",200
+            return {"message":"users deleted"},200
 
-        return "no users to delete"
+        return {"message":"no users to delete"},501

@@ -10,37 +10,32 @@ class Add(Resource):
 
     def post(self):
         data=request.get_json()
-        nome=data[0]
+        nome=data["name"]
         user=UsersModel.find_by_name(nome)
         if user:
             return "already exists", 500
-
         users=UsersModel.get_all()
         if users:
             ids=[]
             for i in users:
                 ids.append(i.ordine)
-
                 top=max(ids)
                 ordine=top+1
         else:
             ordine=1
-
         user=UsersModel(None, nome, ordine)
         user.save_to_db()
-
-        return "user added", 200
+        return {"message": "user added"}, 200
 
 
     def delete(self):
         data=request.get_json()
-        nome=data[0]
+        nome=data["name"]
         user=UsersModel.find_by_name(nome)
         if user:
             user.delete_from_db()
-            return "deleted", 200
-
-        return "user does not exist", 500
+            return {"message":"deleted"}, 200
+        return {"message":"user does not exist"}, 500
 
 
 
