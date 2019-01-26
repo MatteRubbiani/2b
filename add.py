@@ -10,7 +10,8 @@ class Add(Resource):
 
     def post(self):
         data=request.get_json()
-        nome=data["name"]
+        nome = request.args.get('name')
+        #nome=data["name"]
         user=UsersModel.find_by_name(nome)
         if user:
             return "already exists", 500
