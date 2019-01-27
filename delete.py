@@ -7,7 +7,7 @@ from users import UsersModel
 
 class Delete(Resource):
 
-    def delete(self):
+    def get(self):
         users=UsersModel.get_all()
         if users:
             for i in users:

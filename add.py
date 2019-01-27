@@ -50,4 +50,4 @@ class Get(Resource):
                 d=c[:-1]
                 return {"name":d}, 200
 
-        return {"name":[]}
+        return {"name":""}
