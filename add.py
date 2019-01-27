@@ -5,10 +5,8 @@ from flask_restful import Resource, request
 from users import UsersModel
 
 
-class Add(Resource):
-
-
-    def post(self):
+class Post(Resource):
+    def get(self):
         data=request.get_json()
         nome = request.args.get('name')
         user=UsersModel.find_by_name(nome)
@@ -25,10 +23,10 @@ class Add(Resource):
             ordine=1
         user=UsersModel(None, nome, ordine)
         user.save_to_db()
-        return {"message": "user added"}, 200
+        return {"message": "user added"}, 200        
 
-
-    def delete(self):
+class Delete(Resource):
+    def get(self):
         data=request.get_json()
         nome = request.args.get('name')
         user=UsersModel.find_by_name(nome)
@@ -37,7 +35,7 @@ class Add(Resource):
             return {"message":"deleted"}, 200
         return {"message":"user does not exist"}, 500
 
-
+class Get(Resource):
     def get(self):
         users=UsersModel.get_all()
         a=[]
