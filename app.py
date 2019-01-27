@@ -6,6 +6,7 @@ from datetime import timedelta
 
 from add import Get, Post, Delete1
 from delete import Delete
+from auth import Auth 
 
 
 
@@ -26,6 +27,7 @@ api.add_resource(Get, "/get")
 api.add_resource(Post, "/post")
 api.add_resource(Delete1, "/delete")
 api.add_resource(Delete, "/all")
+api.add_resource(Auth, "/pwd")
 
 
 if __name__=="__main__":
