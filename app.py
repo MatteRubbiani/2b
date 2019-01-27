@@ -4,7 +4,7 @@ from flask_restful import Api
 from datetime import timedelta
 
 
-from add import Get, Post, Delete
+from add import Get, Post, Delete1
 from delete import Delete
 
 
@@ -24,7 +24,7 @@ api=Api(app)
 
 api.add_resource(Get, "/get")
 api.add_resource(Post, "/post")
-api.add_resource(Delete, "/delete")
+api.add_resource(Delete1, "/delete")
 api.add_resource(Delete, "/all")
 
 

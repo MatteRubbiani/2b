@@ -23,9 +23,9 @@ class Post(Resource):
             ordine=1
         user=UsersModel(None, nome, ordine)
         user.save_to_db()
-        return {"message": "user added"}, 200        
+        return {"message": "user added"}, 200
 
-class Delete(Resource):
+class Delete1(Resource):
     def get(self):
         data=request.get_json()
         nome = request.args.get('name')
