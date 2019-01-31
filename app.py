@@ -4,9 +4,12 @@ from flask_restful import Api
 from datetime import timedelta
 
 
-from add import Get, Post, Delete1
-from delete import Delete
-from auth import Auth 
+from resources.add import Add
+from resources.delete import Delete
+from resources.auth import Auth
+from resources.register import Register
+from resources.createclass import CreateClass
+from resources.joinclass import JoinClass
 
 
 
@@ -19,15 +22,16 @@ api=Api(app)
 
 
 
-#@app.before_first_request
-#def create_table():
-    #db.create_all()
+@app.before_first_request
+def create_table():
+    db.create_all()
 
-api.add_resource(Get, "/get")
-api.add_resource(Post, "/post")
-api.add_resource(Delete1, "/delete")
+api.add_resource(Add, "/add")
 api.add_resource(Delete, "/all")
-api.add_resource(Auth, "/pwd")
+#api.add_resource(Auth, "/pwd")
+#api.add_resource(Register, "/register")
+#api.add_resource(CreateClass, "/class/create")
+#api.add_resource(JoinClass, "/class/join")
 
 
 if __name__=="__main__":
