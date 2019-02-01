@@ -22,7 +22,7 @@ class Register(Resource):
         now = datetime.datetime.now()
         epsw=password.encode('utf-8')
         hashed_password = hashlib.sha512(epsw).hexdigest()
-        user=UserModel(None, mail, username, None, None, None, 0, False)
+        user=UserModel(None, mail, username, None, 0, None, 0, False)
         user.password=password
 
         user.save_to_db()
