@@ -50,7 +50,13 @@ def class_users (classe_id):
         for i in  users:
             list.append(i)
         return list
-
+def select_all ():
+    users= UserModel.query.filter_by()
+    list=[]
+    if users:
+        for i in  users:
+            list.append(i)
+        return list
 def add_to_class (mail, classe_id):
     user=UserModel.query.filter_by(mail=mail).first()
     user.classe_id=classe_id

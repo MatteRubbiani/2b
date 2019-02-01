@@ -2,7 +2,7 @@ from db import db
 from flask_restful import Resource, request
 
 
-from models.users import UserModel, class_users
+from models.users import UserModel, class_users, select_all
 
 
 class Add(Resource):
@@ -47,7 +47,7 @@ class Add(Resource):
         user=UserModel.find_by_mail(mail)
         if user is None:
             return "does not exist"
-        users=class_users(user.classe_id)
+        users=select_all()
         a=[]
         if users:
             newlist = sorted(users, key=lambda x: x.ordine)
@@ -60,5 +60,5 @@ class Add(Resource):
                     if i:
                         c=c+i+","
                 d=c[:-1]
-                return {"name":d}, 20
+                return {"name":d}, 200
         return {"name":""}
