@@ -2,7 +2,7 @@ from db import db
 from flask_restful import Resource
 
 
-from users import UsersModel
+from models.users import UserModel
 
 
 class Delete(Resource):

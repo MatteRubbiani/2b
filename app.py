@@ -6,10 +6,10 @@ from datetime import timedelta
 
 from resources.add import Add
 from resources.delete import Delete
-from resources.auth import Auth
-from resources.register import Register
-from resources.createclass import CreateClass
-from resources.joinclass import JoinClass
+#from resources.auth import Auth
+#from resources.register import Register
+#from resources.createclass import CreateClass
+#from resources.joinclass import JoinClass
 
 
 
