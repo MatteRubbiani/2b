@@ -7,7 +7,7 @@ from datetime import timedelta
 from resources.add import Add
 from resources.delete import Delete
 #from resources.auth import Auth
-#from resources.register import Register
+from resources.register import Register
 #from resources.createclass import CreateClass
 #from resources.joinclass import JoinClass
 
@@ -29,7 +29,7 @@ api=Api(app)
 api.add_resource(Add, "/add")
 api.add_resource(Delete, "/all")
 #api.add_resource(Auth, "/pwd")
-#api.add_resource(Register, "/register")
+api.add_resource(Register, "/register")
 #api.add_resource(CreateClass, "/class/create")
 #api.add_resource(JoinClass, "/class/join")
 

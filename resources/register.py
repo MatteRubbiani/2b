@@ -11,13 +11,14 @@ from models.users import UserModel
 
 class Register(Resource):
     def post(self):
-        mail=request.args.get('mail')
-        username=request.args.get('username')
-        password=request.args.get('password')
+        data=request.get_json()
+        mail=data["mail"]
+        username=data["username"]
+        password=data["password"]
         user=UserModel.find_by_mail(mail)
-        if user:
-            if user.confermato==True:
-                return "mail already taken", 400
+        #if user:
+            #if user.confermato==True:
+                #return "mail already taken", 400
         now = datetime.datetime.now()
         epsw=password.encode('utf-8')
         hashed_password = hashlib.sha512(epsw).hexdigest()
@@ -55,4 +56,4 @@ il Team WaitingList
         server.login("smartmates2018@gmail.com", "smartmates1")
         server.sendmail("smartmates2018gmail.com", mail, message)
 
-        return "user created, to be confirmed", 200
+        return {"messgae":"user created, to be confirmed"}, 200
