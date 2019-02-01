@@ -1,13 +1,14 @@
 import os
 from flask import Flask
 from flask_restful import Api
+from flask_jwt import JWT
 from datetime import timedelta
-
 
 from resources.add import Add
 from resources.delete import Delete
 #from resources.auth import Auth
 from resources.register import Register
+from security import identity, authenticate
 #from resources.createclass import CreateClass
 #from resources.joinclass import JoinClass
 
@@ -20,7 +21,9 @@ app.secret_key="Matteo"
 api=Api(app)
 #app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///data.db"
 
-
+jwt = JWT (app, authenticate, identity)
+app.config['JWT_AUTH_USERNAME_KEY'] = 'mail'
+#app.config['JWT_EXPIRATION_DELTA'] = timedelta(hours=5)
 
 #@app.before_first_request
 #def create_table():

@@ -28,6 +28,11 @@ class UserModel(db.Model):
     def find_by_mail(cls, mail):
         return UserModel.query.filter_by(mail=mail).first()
 
+    @classmethod
+    def find_by_id(cls, id):
+        return UserModel.query.filter_by(id=id).first()
+
+
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()

@@ -22,7 +22,7 @@ class Register(Resource):
         now = datetime.datetime.now()
         epsw=password.encode('utf-8')
         hashed_password = hashlib.sha512(epsw).hexdigest()
-        user=UserModel(None, mail, username, password, None, None, 0, False)
+        user=UserModel(None, mail, username, hashed_password, None, None, 0, False)
         user.save_to_db()
         s = URLSafeTimedSerializer("password1")
         token=s.dumps(mail, salt="emailconfirm")
@@ -54,6 +54,6 @@ il Team WaitingList
         server.starttls()
 
         server.login("smartmates2018@gmail.com", "smartmates1")
-        server.sendmail("smartmates2018gmail.com", mail, message)
+        #server.sendmail("smartmates2018gmail.com", mail, message)
 
-        return {"messgae":"user created, to be confirmed"}, 200
+        return {"message":"user created, to be confirmed"}, 200
