@@ -11,10 +11,12 @@ class ConfirmMail (Resource):
         try:
             mail=s.loads(token, salt="emailconfirm")
             user=UserModel.find_by_mail(mail)
-            if user.confirmed==False:
-                user.confirmed=True
-                user.save_to_db()
-                return "user confirmed"
-            return "user already confirmed"
+            if user:
+                if user.confirmed==False:
+                    user.confirmed=True
+                    user.save_to_db()
+                    return "user confirmed"
+                return "user already confirmed"
+            return "user does not exist", 400
         except:
             return "your token is expired"
