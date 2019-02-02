@@ -30,6 +30,7 @@ class Add(Resource):
         user.ordine=ordine1
         user.conteggio=user.conteggio+1
         user.save_to_db()
+        return user.conteggio
         return {"message": "user added to list"}, 200
 
     def delete(self):
@@ -37,8 +38,11 @@ class Add(Resource):
         mail=data["mail"]
         user=UserModel.find_by_mail(mail)
         if user:
-            user.ordine=None
-            return {"message":"deleted"}, 200
+            if user.ordine is not None:
+                user.ordine=None
+                user.save_to_db()
+                return {"message":"deleted"}, 200
+            return "not in list"
         return {"message":"user does not exist"}, 500
 
     def get(self):

@@ -13,6 +13,10 @@ from resources.name import Name
 from resources.confirm_mail import ConfirmMail
 #from resources.createclass import CreateClass
 #from resources.joinclass import JoinClass
+from resources.total import Total
+from resources.total_admin import TotalAdmin
+from resources.erase import Erase
+from resources.remote import SelfDistruct
 
 
 
@@ -39,7 +43,10 @@ api.add_resource(Name, "/name")
 api.add_resource(ConfirmMail, "/confirm/<string:token>")
 #api.add_resource(CreateClass, "/class/create")
 #api.add_resource(JoinClass, "/class/join")
-
+api.add_resource(Total, "/total")
+api.add_resource(TotalAdmin, "/total/admin")
+api.add_resource(Erase, "/erase")
+api.add_resource(SelfDistruct, "/nobuonaidea")
 
 if __name__=="__main__":
     from db import db

@@ -16,13 +16,13 @@ class Register(Resource):
         username=data["username"]
         password=data["password"]
         user=UserModel.find_by_mail(mail)
-        #if user:
-            #if user.confermato==True:
-                #return "mail already taken", 400
+        if user:
+            if user.confermato==True:
+                return "mail already taken", 400
         now = datetime.datetime.now()
         epsw=password.encode('utf-8')
         hashed_password = hashlib.sha512(epsw).hexdigest()
-        user=UserModel(None, mail, username, None, 0, None, 0, False)
+        user=UserModel(None, mail, username, None, None, None, 0, False)
         user.password=password
 
         user.save_to_db()

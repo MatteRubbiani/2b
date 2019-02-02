@@ -1,22 +1,20 @@
-from db import db
 from flask_restful import Resource, request
-
-
 from models.users import UserModel, select_all
 
 
-class Delete(Resource):
 
-    def delete(self):
+class TotalAdmin (Resource):
+    def get (self):
         data=request.get_json()
         mail=data["mail"]
         user=UserModel.find_by_mail(mail)
         if user:
             users=select_all()
+            a=[]
             if users:
+                c=[]
                 for i in users:
-                    i.ordine=None
-                    user.save_to_db()
-                return {"message":"users deleted"},200
-            return {"message":"no users"}, 500
-        return {"message":"user does not exist"},500
+                    b={"username":i.username,
+                    "conteggio":i.conteggio}
+                    c.append(b)
+                return {"list":c}

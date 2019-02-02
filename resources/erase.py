@@ -5,7 +5,7 @@ from flask_restful import Resource, request
 from models.users import UserModel, select_all
 
 
-class Delete(Resource):
+class Erase(Resource):
 
     def delete(self):
         data=request.get_json()
@@ -15,6 +15,7 @@ class Delete(Resource):
             users=select_all()
             if users:
                 for i in users:
+                    i.conteggio=0
                     i.ordine=None
                     user.save_to_db()
                 return {"message":"users deleted"},200
