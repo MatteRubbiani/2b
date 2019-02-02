@@ -54,6 +54,7 @@ class Add(Resource):
             for i in newlist:
                 if i.ordine!=None:
                     a.append(i.username)
+            return a
             c=""
             if a:
                 for i in a:
