@@ -10,6 +10,7 @@ from resources.delete import Delete
 from resources.register import Register
 from security import identity, authenticate
 from resources.name import Name
+from resources.confirm_mail import ConfirmMail
 #from resources.createclass import CreateClass
 #from resources.joinclass import JoinClass
 
@@ -35,6 +36,7 @@ api.add_resource(Delete, "/all")
 #api.add_resource(Auth, "/pwd")
 api.add_resource(Register, "/register")
 api.add_resource(Name, "/name")
+api.add_resource(ConfirmMail, "/confirm/<string:token>")
 #api.add_resource(CreateClass, "/class/create")
 #api.add_resource(JoinClass, "/class/join")
 
