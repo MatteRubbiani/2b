@@ -22,7 +22,13 @@ class Total (Resource):
                         a.append(i)
                 c=[]
                 for i in a:
+                    if i.id==user.id:
+                        p=True
+                    else:
+                        p=False
+
                     b={"username":i.username,
-                    "conteggio":i.conteggio}
+                    "conteggio":i.conteggio,
+                    "isYou":p}
                     c.append(b)
                 return c
