@@ -19,11 +19,15 @@ class Register(Resource):
         if user:
             if user.confermato==True:
                 return "mail already taken", 400
+            epsw=password.encode('utf-8')
+            hashed_password = hashlib.sha512(epsw).hexdigest()
+            user.password=hashed_password
+            return "user modified"
         now = datetime.datetime.now()
         epsw=password.encode('utf-8')
         hashed_password = hashlib.sha512(epsw).hexdigest()
         user=UserModel(None, mail, username, None, None, None, 0, False)
-        user.password=password
+        user.password=hashed_password
 
         user.save_to_db()
         s = URLSafeTimedSerializer("password1")
