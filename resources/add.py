@@ -21,8 +21,8 @@ class Add(Resource):
             for i in users:
                 if i.ordine is not None:
                     ids.append(i.ordine)
-            top=max(ids)
-            if top:
+            if ids:
+                top=max(ids)
                 ordine1=top+1
             else:
                 ordine1=1

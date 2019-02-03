@@ -17,4 +17,4 @@ class TotalAdmin (Resource):
                     b={"username":i.username,
                     "conteggio":i.conteggio}
                     c.append(b)
-                return {"list":c}
+                return c
