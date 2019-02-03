@@ -19,8 +19,9 @@ class Add(Resource):
         if users:
             ids=[]
             for i in users:
-                ids.append(i.ordine)
-                top=max(ids)
+                if i.ordine is not None:
+                    ids.append(i.ordine)
+            top=max(ids)
             if top:
                 ordine1=top+1
             else:
@@ -54,9 +55,12 @@ class Add(Resource):
         users=select_all()
         a=[]
         if users:
-            newlist = sorted(users, key=lambda x: x.ordine)
+            k=[]
+            for i in users:
+                if i.ordine is not None:
+                    k.append(i)
+            newlist = sorted(k, key=lambda x: x.ordine)
             for i in newlist:
-                if i.ordine!=None:
                     a.append(i.username)
             return a
             c=""

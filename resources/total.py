@@ -12,7 +12,11 @@ class Total (Resource):
             users=select_all()
             a=[]
             if users:
-                newlist = sorted(users, key=lambda x: x.ordine)
+                b=[]
+                for i in users:
+                    if i.ordine is not None:
+                        b.append(i)
+                newlist = sorted(b, key=lambda x: x.ordine)
                 for i in newlist:
                     if i.ordine!=None:
                         a.append(i)
