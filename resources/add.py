@@ -31,7 +31,6 @@ class Add(Resource):
         user.ordine=ordine1
         user.conteggio=user.conteggio+1
         user.save_to_db()
-        return user.conteggio
         return {"message": "user added to list"}, 200
 
     def delete(self):
