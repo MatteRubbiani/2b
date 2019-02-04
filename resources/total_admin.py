@@ -16,6 +16,6 @@ class TotalAdmin (Resource):
                     b={"username":i.username,
                     "conteggio":i.conteggio,
                     "isYou":0,
-                    "mail":user.mail}
+                    "mail":i.mail}
                     c.append(b)
                 return c
