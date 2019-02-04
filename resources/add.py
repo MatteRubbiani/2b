@@ -34,8 +34,7 @@ class Add(Resource):
         return {"message": "user added to list"}, 200
 
     def delete(self):
-        data=request.get_json()
-        mail=data["mail"]
+        mail=request.args.get('mail')
         user=UserModel.find_by_mail(mail)
         if user:
             if user.ordine is not None:
