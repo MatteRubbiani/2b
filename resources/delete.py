@@ -7,7 +7,7 @@ from models.users import UserModel, select_all
 
 class Delete(Resource):
 
-    def delete(self):
+    def post(self):
         data=request.get_json()
         mail=data["mail"]
         user=UserModel.find_by_mail(mail)
