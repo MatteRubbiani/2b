@@ -5,8 +5,8 @@ from models.users import UserModel, select_all
 
 class Total (Resource):
     def get (self):
-        data=request.get_json()
-        mail=data["mail"]
+        
+        mail=request.args.get('mail')
         user=UserModel.find_by_mail(mail)
         if user:
             users=select_all()
