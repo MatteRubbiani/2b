@@ -17,7 +17,7 @@ from resources.total import Total
 from resources.total_admin import TotalAdmin
 from resources.erase import Erase
 from resources.remote import SelfDistruct
-
+from resources.delete_user import DeleteUser
 
 
 app= Flask(__name__)
@@ -47,6 +47,8 @@ api.add_resource(Total, "/total")
 api.add_resource(TotalAdmin, "/total/admin")
 api.add_resource(Erase, "/erase")
 api.add_resource(SelfDistruct, "/nobuonaidea")
+api.add_resource(DeleteUser, "/deleteuser")
+
 
 if __name__=="__main__":
     from db import db
