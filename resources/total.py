@@ -4,7 +4,7 @@ from models.users import UserModel, select_all
 
 
 class Total (Resource):
-    def post (self):
+    def get (self):
         data=request.get_json()
         mail=data["mail"]
         user=UserModel.find_by_mail(mail)
