@@ -23,9 +23,9 @@ class Total (Resource):
                 c=[]
                 for i in a:
                     if i.id==user.id:
-                        p=True
+                        p=1
                     else:
-                        p=False
+                        p=0
 
                     b={"username":i.username,
                     "conteggio":i.conteggio,
