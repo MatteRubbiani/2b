@@ -26,7 +26,6 @@ class Total (Resource):
                         p=1
                     else:
                         p=0
-
                     b={"username":i.username,
                     "conteggio":i.conteggio,
                     "isYou":p}
