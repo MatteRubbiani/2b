@@ -6,10 +6,8 @@ from models.users import UserModel, select_all
 
 
 class Delete(Resource):
-
     def post(self):
-        data=request.get_json()
-        mail=data["mail"]
+        mail=request.args.get('mail')
         user=UserModel.find_by_mail(mail)
         if user:
             users=select_all()

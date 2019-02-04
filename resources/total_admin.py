@@ -5,8 +5,7 @@ from models.users import UserModel, select_all
 
 class TotalAdmin (Resource):
     def get (self):
-        data=request.get_json()
-        mail=data["mail"]
+        mail=request.args.get('mail')
         user=UserModel.find_by_mail(mail)
         if user:
             users=select_all()
@@ -15,6 +14,8 @@ class TotalAdmin (Resource):
                 c=[]
                 for i in users:
                     b={"username":i.username,
-                    "conteggio":i.conteggio}
+                    "conteggio":i.conteggio,
+                    "isYou":0,
+                    "mail":user.mail}
                     c.append(b)
                 return c

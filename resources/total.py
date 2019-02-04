@@ -5,7 +5,6 @@ from models.users import UserModel, select_all
 
 class Total (Resource):
     def get (self):
-        
         mail=request.args.get('mail')
         user=UserModel.find_by_mail(mail)
         if user:
@@ -28,6 +27,7 @@ class Total (Resource):
                         p=0
                     b={"username":i.username,
                     "conteggio":i.conteggio,
-                    "isYou":p}
+                    "isYou":p,
+                    "mail":i.mail}
                     c.append(b)
                 return c

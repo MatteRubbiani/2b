@@ -14,7 +14,7 @@ class Add(Resource):
             return "does not exist", 500
 
         if user.ordine:
-            return "already in list"
+            return "already in list", 402
         users=class_users(user.classe_id)
         if users:
             ids=[]
