@@ -18,7 +18,7 @@ from resources.total_admin import TotalAdmin
 from resources.erase import Erase
 from resources.remote import SelfDistruct
 from resources.delete_user import DeleteUser
-
+from resources.addAdmin import AddAdmin
 
 app= Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"]=os.environ.get("DATABASE_URL","sqlite:///data.db")
@@ -48,6 +48,7 @@ api.add_resource(TotalAdmin, "/total/admin")
 api.add_resource(Erase, "/erase")
 api.add_resource(SelfDistruct, "/nobuonaidea")
 api.add_resource(DeleteUser, "/deleteuser")
+api.add_resource(AddAdmin, "/add/admin")
 
 
 if __name__=="__main__":

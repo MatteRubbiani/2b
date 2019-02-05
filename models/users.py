@@ -12,8 +12,9 @@ class UserModel(db.Model):
     classe_id=db.Column(db.Integer)
     conteggio=db.Column(db.Integer)
     confermato=db.Column(db.Boolean)
+    totale=db.Column(db.Integer)
 
-    def __init__(self, id, mail, username, password , ordine, classe_id, conteggio, confermato):
+    def __init__(self, id, mail, username, password , ordine, classe_id, conteggio, confermato, totale):
         self.id=id
         self.mail=mail
         self.username=username
@@ -21,16 +22,17 @@ class UserModel(db.Model):
         self.classe_id=classe_id
         self.conteggio=conteggio
         self.confermato=confermato
+        self.totale=totale
 
 
 
     @classmethod
     def find_by_mail(cls, mail):
-        return UserModel.query.filter_by(mail=mail).first()
+        return UserModel.query.filter_by(mail=mail, confermato=True).first()
 
     @classmethod
     def find_by_id(cls, id):
-        return UserModel.query.filter_by(id=id).first()
+        return UserModel.query.filter_by(id=id, confermato=True).first()
 
 
     def delete_from_db(self):
@@ -44,20 +46,20 @@ class UserModel(db.Model):
 
 
 def class_users (classe_id):
-    users= UserModel.query.filter_by(classe_id=classe_id)
+    users= UserModel.query.filter_by(classe_id=classe_id, confermato=True)
     list=[]
     if users:
         for i in  users:
             list.append(i)
         return list
 def select_all ():
-    users= UserModel.query.filter_by()
+    users= UserModel.query.filter_by(confermato=True)
     list=[]
     if users:
         for i in  users:
             list.append(i)
         return list
 def add_to_class (mail, classe_id):
-    user=UserModel.query.filter_by(mail=mail).first()
+    user=UserModel.query.filter_by(mail=mail, confermato=True).first()
     user.classe_id=classe_id
     user.save_to_db()

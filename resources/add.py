@@ -29,7 +29,7 @@ class Add(Resource):
         else:
             ordine1=1
         user.ordine=ordine1
-        user.conteggio=user.conteggio+1
+
         user.save_to_db()
         return {"message": "user added to list"}, 200
 
@@ -39,6 +39,7 @@ class Add(Resource):
         if user:
             if user.ordine is not None:
                 user.ordine=None
+                
                 user.save_to_db()
                 return {"message":"deleted"}, 200
             return "not in list"
