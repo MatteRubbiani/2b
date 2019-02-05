@@ -26,7 +26,7 @@ class AddAdmin (Resource):
                 c=[]
                 for i in users:
                     b={"username":i.username,
-                    "totale":i.totale,
+                    "conteggio":i.totale,
                     "isYou":0,
                     "mail":i.mail}
                     c.append(b)
