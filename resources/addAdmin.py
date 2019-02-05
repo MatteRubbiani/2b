@@ -31,3 +31,4 @@ class AddAdmin (Resource):
                     "mail":i.mail}
                     c.append(b)
             return c
+        return "user does not exist", 500
