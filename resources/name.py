@@ -6,8 +6,7 @@ from models.users import UserModel
 
 class Name(Resource):
     def get(self):
-        data=request.get_json()
-        mail=data["mail"]
+        mail=request.args.get('mail')
         user=UserModel.find_by_mail(mail)
         if user:
             return {"message":user.username}
