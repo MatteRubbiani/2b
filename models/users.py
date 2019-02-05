@@ -27,11 +27,11 @@ class UserModel(db.Model):
 
 
     @classmethod
-    def find_by_mail(cls, mail):
+    def find_by_mail_confirmed(cls, mail):
         return UserModel.query.filter_by(mail=mail, confermato=True).first()
 
     @classmethod
-    def find_by_mail_confirm(cls, mail):
+    def find_by_mail(cls, mail):
         return UserModel.query.filter_by(mail=mail).first()
 
 

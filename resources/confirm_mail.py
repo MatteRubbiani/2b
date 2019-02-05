@@ -11,7 +11,7 @@ class ConfirmMail (Resource):
         s = URLSafeTimedSerializer("password1")
         try:
             mail=s.loads(token, salt="emailconfirm")
-            user=UserModel.find_by_mail_confirm(mail)
+            user=UserModel.find_by_mail(mail)
             if user:
                 if user.confermato!=True:
                     user.confermato=True

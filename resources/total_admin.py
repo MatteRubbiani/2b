@@ -6,7 +6,7 @@ from models.users import UserModel, select_all
 class TotalAdmin (Resource):
     def get (self):
         mail=request.args.get('mail')
-        user=UserModel.find_by_mail(mail)
+        user=UserModel.find_by_mail_confirmed(mail)
         if user:
             users=select_all()
             a=[]
