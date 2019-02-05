@@ -28,7 +28,7 @@ class UserModel(db.Model):
 
     @classmethod
     def find_by_mail(cls, mail):
-        return UserModel.query.filter_by(mail=mail, confermato=True).first()
+        return UserModel.query.filter_by(mail=mail).first()
 
     @classmethod
     def find_by_id(cls, id):
