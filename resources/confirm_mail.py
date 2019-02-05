@@ -13,7 +13,7 @@ class ConfirmMail (Resource):
             mail=s.loads(token, salt="emailconfirm")
             user=UserModel.find_by_mail_confirm(mail)
             if user:
-                if user.confermato==False:
+                if user.confermato!=True:
                     user.confermato=True
                     user.save_to_db()
                     return "user confirmed"
