@@ -11,13 +11,13 @@ class ConfirmMail (Resource):
         s = URLSafeTimedSerializer("password1")
         try:
             mail=s.loads(token, salt="emailconfirm")
-            user=UserModel.find_by_mail(mail)
+            user=UserModel.find_by_mail_confirm(mail)
             if user:
                 if user.confermato==False:
                     user.confermato=True
                     user.save_to_db()
                     return "user confirmed"
-                return "user already confirmed", 400 
+                return "user already confirmed", 400
             return "user does not exist", 400
         except:
             return "your token is expired"
